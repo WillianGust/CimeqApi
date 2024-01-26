@@ -25,7 +25,7 @@ namespace CimeqApi.Services
                 Adress = "456 saint joliette strt",
                 Password = "654321"
             },
-            // Adicionando dados para teste de login
+
             new Client()
             {
                 Id = 3,
@@ -44,15 +44,15 @@ namespace CimeqApi.Services
 
         public static List<Client> All()
         {
-            return clients.ToList(); // Retorna uma cópia da lista para evitar modificações inadvertidas
+            return clients.ToList(); 
         }
-        // Método para obter um cliente pelo ID
+
         public static Client GetById(int id)
         {
             return clients.FirstOrDefault(c => c.Id == id);
         }
 
-        // Método para adicionar um novo cliente
+        
         public static Client Add(Client client)
         {
             if (client != null)
@@ -63,7 +63,6 @@ namespace CimeqApi.Services
             return client;
         }
 
-        // Método para atualizar os dados de um cliente
         public static Client Update(int id, Client updatedClient)
         {
             var existingClient = clients.FirstOrDefault(c => c.Id == id);
@@ -80,7 +79,6 @@ namespace CimeqApi.Services
 
         }
 
-        // Método para excluir um cliente pelo ID
         public static bool Delete(int id)
         {
             var clientToRemove = clients.FirstOrDefault(c => c.Id == id);

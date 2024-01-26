@@ -22,7 +22,7 @@ namespace CimeqApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -33,7 +33,7 @@ namespace CimeqApi.Controllers
             {
                 if (model == null)
                 {
-                    return BadRequest("Modelo inválido");
+                    return BadRequest("Invalid model");
                 }
 
                 Client newClient = ClientService.Add(model);
@@ -41,7 +41,7 @@ namespace CimeqApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -52,20 +52,20 @@ namespace CimeqApi.Controllers
             {
                 if (model == null)
                 {
-                    return BadRequest("Modelo inválido");
+                    return BadRequest("Invalid model");
                 }
 
                 Client updatedClient = ClientService.Update(id, model);
                 if (updatedClient == null)
                 {
-                    return NotFound($"Cliente com ID {id} não encontrado");
+                    return NotFound($"Client with ID {id} not found.");
                 }
 
                 return Ok(updatedClient);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -76,20 +76,20 @@ namespace CimeqApi.Controllers
             {
                 if (id < 0)
                 {
-                    return BadRequest("Modelo inválido");
+                    return BadRequest("Invalid model");
                 }
 
                 Client client = ClientService.GetById(id);
                 if (client == null)
                 {
-                    return NotFound($"Cliente com ID {id} não encontrado");
+                    return NotFound($"Client with ID {id} not found.");
                 }
 
                 return Ok(client);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -101,14 +101,14 @@ namespace CimeqApi.Controllers
                 bool result = ClientService.Delete(id);
                 if (!result)
                 {
-                    return NotFound($"Cliente com ID {id} não encontrado");
+                    return NotFound($"Client with ID {id} not found.");
                 }
 
                 return NoContent();
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
     }
